@@ -24,17 +24,17 @@ const AppInfo = () => (
         },
       }}
     >
-    <P>
-      <T>
-        <span className="text text__title">The way back</span>
-      </T>
-      <Text>
-        <span className="text text__description">
-          A former basketball all-star, who has lost his wife and family foundation in a struggle with addiction
-          attempts to regain his soul and salvation by becoming the coach of a disparate ethnically mixed high ...
-        </span>
-      </Text>
-    </P>
+      <P>
+        <T>
+          <span className="text text__title">The way back</span>
+        </T>
+        <Text>
+          <span className="text text__description">
+            A former basketball all-star, who has lost his wife and family foundation in a struggle with addiction
+            attempts to regain his soul and salvation by becoming the coach of a disparate ethnically mixed high ...
+          </span>
+        </Text>
+      </P>
     </ConfigProvider>
   </section>
 );
