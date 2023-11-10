@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+}
+
+.text {
+  font-family: 'Inter UI';
+  font-style: normal;
+  font-weight: 400;
+}
+
+.text__title {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.text__description {
+  font-size: 12px;
+  line-height: 22px;
+}
