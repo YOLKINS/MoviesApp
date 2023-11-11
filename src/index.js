@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
-import AppCard from './components/AppCard';
+import App from './components/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppCard />);
+root.render(<App />);
