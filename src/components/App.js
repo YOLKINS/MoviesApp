@@ -26,16 +26,7 @@ class App extends Component {
     const { moviesData } = this.state;
 
     return (
-      <Flex
-        wrap="wrap"
-        gap="large"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          paddingTop: 20,
-          background: '#FFF',
-        }}
-      >
+      <Flex wrap="wrap" gap="large" className="flex">
         {moviesData.map((movie) => (
           <AppCard key={movie.id} data={movie} movies={this.movies} />
         ))}
