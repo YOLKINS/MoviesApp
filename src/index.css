@@ -20,6 +20,24 @@ body {
   background: #fff;
 }
 
+.card {
+  width: 451px;
+  height: 279px;
+  display: flex;
+  border-radius: 0;
+  position: relative;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+}
+
+.spiner {
+  transform: translate(0, 120px);
+}
+
 .card .ant-card-body {
   padding: 10px 20px;
 }

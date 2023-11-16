@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Card, Spin } from 'antd';
+import { Card } from 'antd';
+
+import defaultImage from '../images/images.png';
 
 import AppInfo from './AppInfo';
+import Spiner from './components/spiner';
 
 class AppCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      linkImage: '',
+      linkImage: defaultImage,
       loading: true,
     };
   }
@@ -28,31 +31,11 @@ class AppCard extends Component {
     const { linkImage, loading } = this.state;
     const { data } = this.props;
 
-    const loadComponent = loading ? <Spin tip="Loading" size="large" /> : null;
-    const imageComponent = !loading ? (
-      <img
-        alt="Movie Poster"
-        src={linkImage}
-        style={{
-          height: '100%',
-          width: '100%',
-          borderRadius: 0,
-        }}
-      />
-    ) : null;
+    const loadComponent = loading ? <Spiner /> : null;
+    const imageComponent = !loading ? <img alt="Movie Poster" src={linkImage} className="image" /> : null;
 
     return (
-      <Card
-        hoverable
-        className="card"
-        style={{
-          width: 451,
-          height: 279,
-          display: 'flex',
-          borderRadius: 0,
-        }}
-        cover={{ ...loadComponent, ...imageComponent }}
-      >
+      <Card hoverable className="card" cover={{ ...loadComponent, ...imageComponent }}>
         <AppInfo data={data} />
       </Card>
     );
