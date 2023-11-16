@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Flex, Alert, Space } from 'antd';
+import { Flex, Alert, Space, Pagination } from 'antd';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import Movies from '../service/service';
@@ -9,19 +9,8 @@ import AppCard from './AppCard';
 class AppFlex extends Component {
   constructor() {
     super();
-    this.state = {
-      moviesData: [],
-    };
+
     this.movies = new Movies();
-  }
-
-  async fetchData() {
-    const res = await this.movies.getMoviesName('return', 1);
-    this.setState({ moviesData: res });
-  }
-
-  async componentDidMount() {
-    await this.fetchData();
   }
 
   ErrorFallback({ error, resetErrorBoundary }) {
@@ -34,7 +23,7 @@ class AppFlex extends Component {
   }
 
   render() {
-    const { moviesData } = this.state;
+    const { moviesData } = this.props;
 
     return (
       <ErrorBoundary FallbackComponent={this.ErrorFallback}>
@@ -43,6 +32,7 @@ class AppFlex extends Component {
             <AppCard key={movie.id} data={movie} movies={this.movies} />
           ))}
         </Flex>
+        <Pagination defaultCurrent={1} total={50} />
       </ErrorBoundary>
     );
   }

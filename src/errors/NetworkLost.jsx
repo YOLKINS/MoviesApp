@@ -3,9 +3,11 @@ import { Space, Alert } from 'antd';
 
 const NetworkLost = () => {
   return (
-    <Space direction="vertical" style={{ width: '100%' }}>
-      <Alert message="Error" type="error" showIcon />
-      <Alert message="Internet connection lost" type="error" />
+    <Space
+      direction="vertical"
+      style={{ width: 'content-border', marginTop: 30, display: 'flex', justifyContent: 'center' }}
+    >
+      <Alert message="Error: Internet connection lost" type="error" showIcon />
     </Space>
   );
 };
