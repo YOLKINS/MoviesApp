@@ -1,12 +1,12 @@
 import React from 'react';
 import { Spin } from 'antd';
 
-const Spiner = () => {
+const Spinner = () => {
   return (
-    <div className="spiner">
+    <div className="spinner">
       <Spin tip="Loading" size="large" />
     </div>
   );
 };
 
-export default Spiner;
+export default Spinner;

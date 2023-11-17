@@ -17,6 +17,8 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background: #fff;
 }
 
@@ -34,7 +36,10 @@ body {
   border-radius: 0;
 }
 
-.spiner {
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: translate(0, 120px);
 }
 

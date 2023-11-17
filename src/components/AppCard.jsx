@@ -4,7 +4,7 @@ import { Card } from 'antd';
 import defaultImage from '../images/images.png';
 
 import AppInfo from './AppInfo';
-import Spiner from './components/spiner';
+import Spinner from './components/spinner';
 
 class AppCard extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class AppCard extends Component {
     const { linkImage, loading } = this.state;
     const { data } = this.props;
 
-    const loadComponent = loading ? <Spiner /> : null;
+    const loadComponent = loading ? <Spinner /> : null;
     const imageComponent = !loading ? <img alt="Movie Poster" src={linkImage} className="image" /> : null;
 
     return (
