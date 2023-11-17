@@ -4,7 +4,7 @@ export default class Movies extends TMDBService {
   async getMoviesName(name, page) {
     const res = await this.getResource(`search/movie?query=${name}&page=${page}`);
     console.log(res);
-    return res.results;
+    return { results: res.results, totalPages: res.total_pages };
   }
 
   async getMoviesImage(movie_id) {

@@ -16,11 +16,27 @@ class AppContent extends Component {
     moviesData: [],
     name: 'return',
     page: 1,
+    totalPages: 1,
   };
 
   searchItem = (movieName) => {
     this.setState({ name: movieName });
   };
+
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page }, () => {
+      this.fetchData();
+    });
+  };
+
+  async updatePage() {
+    const { name, page } = this.state;
+    if (page && name) {
+      await this.movies.getMoviesName(name, page).then((res) => {
+        this.setState({ moviesData: res.results, totalPages: res.totalPages });
+      });
+    }
+  }
 
   async componentDidMount() {
     this.updatePage();
@@ -32,20 +48,16 @@ class AppContent extends Component {
     }
   }
 
-  async updatePage() {
-    const { name, page } = this.state;
-    if (page && name) {
-      await this.movies.getMoviesName(name, page).then((res) => {
-        this.setState({ moviesData: res });
-      });
-    }
-  }
-
   render() {
     return (
       <React.Fragment>
         <AppSearch placeholder="Type to search..." searchItem={this.searchItem} />
-        <AppFlex name={this.state.name} page={this.state.page} moviesData={this.state.moviesData} />
+        <AppFlex
+          name={this.state.name}
+          page={this.state.page}
+          moviesData={this.state.moviesData}
+          totalPages={this.state.totalPages}
+        />
       </React.Fragment>
     );
   }

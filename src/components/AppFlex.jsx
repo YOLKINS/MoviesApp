@@ -23,7 +23,7 @@ class AppFlex extends Component {
   }
 
   render() {
-    const { moviesData } = this.props;
+    const { moviesData, totalPages, page } = this.props;
 
     return (
       <ErrorBoundary FallbackComponent={this.ErrorFallback}>
@@ -32,7 +32,7 @@ class AppFlex extends Component {
             <AppCard key={movie.id} data={movie} movies={this.movies} />
           ))}
         </Flex>
-        <Pagination defaultCurrent={1} total={50} />
+        <Pagination defaultCurrent={1} total={totalPages} current={page} onChange={this.handlePageChange} />
       </ErrorBoundary>
     );
   }
