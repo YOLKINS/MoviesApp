@@ -25,7 +25,7 @@
     "lint:fix": "eslint ./src --fix",
     "format": "prettier ./src --write ",
     "lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "precommit": "npm run lint-staged"
   },
   "eslintConfig": {
     "extends": [
