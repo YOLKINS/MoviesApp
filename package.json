@@ -34,6 +34,10 @@
     ]
   },
   "lint-staged": {
+    "!node_modules/**/*": [
+      "npm run lint:fix",
+      "npm run format"
+    ],
     "src/*.{js,jsx}": [
       "npm run lint:fix",
       "npm run format"
