@@ -17,6 +17,7 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 20px;
+  padding-bottom: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   background: #fff;
@@ -45,4 +46,15 @@ body {
 
 .card .ant-card-body {
   padding: 10px 20px;
+}
+
+.vote__average {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }

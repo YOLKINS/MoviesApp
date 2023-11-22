@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Movies from '../service/service';
+import Movies from '../service/serviceMovies';
 
 import AppFlex from './AppFlex';
 import AppSearch from './AppSearch';
@@ -26,7 +26,6 @@ class AppContent extends Component {
   };
 
   handlePageChange = (page) => {
-    console.log('Page changed to:', page);
     this.setState({ page: page });
   };
 
@@ -49,7 +48,13 @@ class AppContent extends Component {
     }
   }
 
+  async componentWillUnmount() {
+    this.setState({ moviesData: [] });
+  }
+
   render() {
+    const { guestSessionId } = this.props;
+    console.log(`Проверка guestSessionId при render AppContent: ${guestSessionId}`);
     const loading = this.state.loading;
     const componentLoading = loading ? <Spinner /> : null;
     const componentFlex = !loading ? (
@@ -59,6 +64,7 @@ class AppContent extends Component {
         moviesData={this.state.moviesData}
         totalPages={this.state.totalPages}
         handlePageChange={this.handlePageChange}
+        guestSessionId={guestSessionId}
       />
     ) : null;
 

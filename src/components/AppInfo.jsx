@@ -1,9 +1,34 @@
 import React, { Component } from 'react';
-import { Button, Typography } from 'antd';
+import { Typography, Rate } from 'antd';
 import { format, parseISO } from 'date-fns';
+
+import Session from '../service/serviceSession';
+
+import Vote from './components/vote';
+import AppGenre from './components/genre';
 
 const { Text, Title: T, Paragraph: P } = Typography;
 class AppInfo extends Component {
+  constructor() {
+    super();
+
+    this.session = new Session();
+  }
+
+  state = {
+    count: 0,
+  };
+
+  handleChangeRate = async (rating) => {
+    const { guestSessionId } = this.props;
+    console.log(`На сколько оценен фильм? ${rating}`);
+    await this.session.rateMovie(rating, this.props.data.id, guestSessionId).then((res) => {
+      if (res) {
+        this.setState({ count: rating });
+      }
+    });
+  };
+
   textStyles = {
     fontFamily: 'Inter',
     fontStyle: 'normal',
@@ -16,12 +41,13 @@ class AppInfo extends Component {
   };
 
   buttonStyle = {
-    width: 46,
+    display: 'flex',
+    alignItems: 'center',
+    padding: 5,
     height: 20,
     borderRadius: 2,
     border: '1px solid #d9d9d9',
     background: '#fafafa',
-    padding: 0,
     textAlign: 'center',
     marginRight: 8,
     ...this.textStyles,
@@ -29,7 +55,9 @@ class AppInfo extends Component {
   };
 
   render() {
-    let { title, overview, release_date } = this.props.data;
+    let { title, overview, release_date, vote_average, genre_ids } = this.props.data;
+
+    const vote = <Vote voteAverage={vote_average} />;
 
     if (release_date) {
       release_date = format(parseISO(release_date), 'MMMM d, y');
@@ -50,11 +78,12 @@ class AppInfo extends Component {
             fontSize: 20,
             margin: 0,
             display: 'flex',
-            alignItems: 'flex-start',
-            flexDirection: 'column',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
           }}
         >
           {title}
+          {vote}
         </T>
         <Text
           style={{
@@ -64,9 +93,8 @@ class AppInfo extends Component {
         >
           {release_date}
         </Text>
-        <P>
-          <Button style={{ ...this.buttonStyle }}>Action</Button>
-          <Button style={{ ...this.buttonStyle }}>Drama</Button>
+        <P style={{ display: 'flex' }}>
+          <AppGenre genreIds={genre_ids} buttonStyle={this.buttonStyle} />
         </P>
         <P
           ellipsis={{
@@ -76,6 +104,7 @@ class AppInfo extends Component {
         >
           {overview}
         </P>
+        <Rate defaultValue={0} count={10} value={this.state.count} onChange={this.handleChangeRate} />
       </section>
     );
   }

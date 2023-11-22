@@ -14,4 +14,11 @@ export default class Movies extends TMDBService {
     }
     return '';
   }
+
+  async getGenreOfMovie(genre_ids) {
+    const res = await this.getResource('genre/movie/list');
+    const matchingGenres = res.genres.filter((genre) => genre_ids.includes(genre.id));
+    const genreNames = matchingGenres.map((genre) => genre.name);
+    return genreNames;
+  }
 }

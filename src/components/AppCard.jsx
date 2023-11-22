@@ -29,14 +29,14 @@ class AppCard extends Component {
 
   render() {
     const { linkImage, loading } = this.state;
-    const { data } = this.props;
+    const { data, guestSessionId } = this.props;
 
     const loadComponent = loading ? <Spinner /> : null;
     const imageComponent = !loading ? <img alt="Movie Poster" src={linkImage} className="image" /> : null;
 
     return (
       <Card hoverable className="card" cover={{ ...loadComponent, ...imageComponent }}>
-        <AppInfo data={data} />
+        <AppInfo data={data} guestSessionId={guestSessionId} />
       </Card>
     );
   }
