@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 import Movies from '../service/serviceMovies';
+import { NotFoundMovies } from '../errors/Errors';
 
-import Cards from './Cards';
-import AppSearch from './Search';
+import CardList from './CardList';
 import Spinner from './components/spinner';
+import SearchForm from './Search';
 
 class Content extends Component {
   constructor() {
@@ -54,11 +55,11 @@ class Content extends Component {
 
   render() {
     const { guestSessionId } = this.props;
-    console.log(`Проверка guestSessionId при render AppContent: ${guestSessionId}`);
-    const loading = this.state.loading;
+    const { loading, moviesData } = this.state;
     const componentLoading = loading ? <Spinner /> : null;
+    const componentNotFound = !loading && moviesData.length == 0 ? <NotFoundMovies /> : null;
     const componentFlex = !loading ? (
-      <Cards
+      <CardList
         name={this.state.name}
         page={this.state.page}
         moviesData={this.state.moviesData}
@@ -70,8 +71,9 @@ class Content extends Component {
 
     return (
       <React.Fragment>
-        <AppSearch placeholder="Type to search..." searchItem={this.searchItem} style={{ margin: 50 }} />
+        <SearchForm placeholder="Type to search..." searchItem={this.searchItem} style={{ margin: 50 }} />
         {componentLoading}
+        {componentNotFound}
         {componentFlex}
       </React.Fragment>
     );

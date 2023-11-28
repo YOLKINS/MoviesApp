@@ -3,7 +3,6 @@ import TMDBService from './tmdb-service';
 export default class Movies extends TMDBService {
   async getMoviesName(name, page) {
     const res = await this.getResource(`search/movie?query=${name}&page=${page}`);
-    console.log(res);
     return { results: res.results, totalPages: res.total_pages };
   }
 

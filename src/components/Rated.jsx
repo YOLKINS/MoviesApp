@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Session from '../service/serviceSession';
 
-import AppFlex from './Cards';
+import AppFlex from './CardList';
 import Spinner from './components/spinner';
 
 class Rated extends Component {

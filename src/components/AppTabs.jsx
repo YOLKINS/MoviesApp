@@ -25,14 +25,16 @@ class AppTabs extends Component {
 
   async updateSession() {
     const { apiKey } = this.state;
-    if (apiKey) {
+    const storedGuestSessionId = localStorage.getItem('guestSessionId');
+    if (storedGuestSessionId) {
+      this.setState({ guestSessionId: storedGuestSessionId });
+    } else {
       await this.session.getSessionID(apiKey).then((res) => {
-        console.log(res);
+        localStorage.setItem('guestSessionId', res);
         this.setState({ guestSessionId: res });
       });
     }
   }
-
   async componentDidMount() {
     await this.updateSession();
   }
@@ -54,8 +56,6 @@ class AppTabs extends Component {
         ),
       },
     ];
-
-    console.log(`Проверка guestSessionId при render AppTabs: ${this.state.guestSessionId}`);
 
     return <Tabs defaultActiveKey="1" activeKey={this.state.activeKey} items={items} onChange={this.onChange} />;
   }

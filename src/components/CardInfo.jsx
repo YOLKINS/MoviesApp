@@ -17,18 +17,32 @@ class CardInfo extends Component {
   }
 
   state = {
-    count: 0,
+    storedRating: 0,
   };
 
   handleChangeRate = async (rating) => {
-    const { guestSessionId } = this.props;
-    console.log(`На сколько оценен фильм? ${rating}`);
-    await this.session.rateMovie(rating, this.props.data.id, guestSessionId).then((res) => {
+    const { guestSessionId, data } = this.props;
+    const storageKey = `movieRating_${data.id}`;
+    await this.session.rateMovie(rating, data.id, guestSessionId).then((res) => {
       if (res) {
-        this.setState({ count: rating });
+        localStorage.setItem(storageKey, rating);
+        this.setState({ storedRating: rating });
       }
     });
   };
+
+  getStoredRating = () => {
+    const { data } = this.props;
+    const storageKey = `movieRating_${data.id}`;
+    const rating = Number(localStorage.getItem(storageKey)) || 0;
+    if (rating) {
+      return rating;
+    }
+  };
+
+  componentDidMount() {
+    this.setState({ storedRating: this.getStoredRating() });
+  }
 
   textStyles = {
     fontFamily: 'Inter',
@@ -94,18 +108,24 @@ class CardInfo extends Component {
         >
           {release_date}
         </Text>
-        <P style={{ display: 'flex' }}>
+        <P style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Genre genreIds={genre_ids} buttonStyle={this.buttonStyle} />
         </P>
         <P
           ellipsis={{
-            rows: 6,
+            rows: 5,
           }}
           style={{ ...this.textStyles, fontSize: 12, verticalAlign: 'top' }}
         >
           {overview}
         </P>
-        <Rate defaultValue={0} count={10} value={this.state.count} onChange={this.handleChangeRate} />
+        <Rate
+          defaultValue={0}
+          count={10}
+          value={this.state.storedRating}
+          onChange={this.handleChangeRate}
+          style={{ fontSize: 15 }}
+        />
       </section>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Online, Offline } from 'react-online-status';
 
 import Movies from '../service/serviceMovies';
-import NetworkLost from '../errors/NetworkLost';
+import { NetworkLost } from '../errors/Errors';
 
 import { MovieServiceProvider } from './service-movie-context/movieContext';
 import AppTabs from './AppTabs';

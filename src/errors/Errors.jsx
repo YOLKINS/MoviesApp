@@ -12,4 +12,15 @@ const NetworkLost = () => {
   );
 };
 
-export default NetworkLost;
+const NotFoundMovies = () => {
+  return (
+    <Space
+      direction="vertical"
+      style={{ width: 'content-border', marginTop: 30, display: 'flex', justifyContent: 'center' }}
+    >
+      <Alert message="Movies not found" type="error" showIcon />
+    </Space>
+  );
+};
+
+export { NetworkLost, NotFoundMovies };

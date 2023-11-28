@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import { debounce } from 'lodash';
 const { Search } = Input;
 
-export default class NewTaskForm extends Component {
+export default class SearchForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,7 +14,7 @@ export default class NewTaskForm extends Component {
   debouncedSearch = debounce(async (valueName) => {
     await this.props.searchItem(valueName);
     this.setState({ label: '' });
-  }, 500);
+  }, 1000);
 
   onLabelHandleChange = async (e) => {
     this.setState({

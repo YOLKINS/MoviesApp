@@ -6,7 +6,7 @@ import Movies from '../service/serviceMovies';
 
 import AppCard from './Card';
 
-class Cards extends Component {
+class CardList extends Component {
   constructor() {
     super();
 
@@ -43,4 +43,4 @@ class Cards extends Component {
   }
 }
 
-export default Cards;
+export default CardList;
