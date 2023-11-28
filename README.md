@@ -1,1 +1,1 @@
-https://moviesapp-ke7mbhyty-yolkins-projects.vercel.app/
+https://moviesapp-b0cm890pg-yolkins-projects.vercel.app/
