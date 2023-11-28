@@ -5,10 +5,11 @@ import { format, parseISO } from 'date-fns';
 import Session from '../service/serviceSession';
 
 import Vote from './components/vote';
-import AppGenre from './components/genre';
+import Genre from './components/genre';
 
 const { Text, Title: T, Paragraph: P } = Typography;
-class AppInfo extends Component {
+
+class CardInfo extends Component {
   constructor() {
     super();
 
@@ -94,7 +95,7 @@ class AppInfo extends Component {
           {release_date}
         </Text>
         <P style={{ display: 'flex' }}>
-          <AppGenre genreIds={genre_ids} buttonStyle={this.buttonStyle} />
+          <Genre genreIds={genre_ids} buttonStyle={this.buttonStyle} />
         </P>
         <P
           ellipsis={{
@@ -110,4 +111,4 @@ class AppInfo extends Component {
   }
 }
 
-export default AppInfo;
+export default CardInfo;

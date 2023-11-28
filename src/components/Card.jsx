@@ -3,7 +3,7 @@ import { Card } from 'antd';
 
 import defaultImage from '../images/images.png';
 
-import AppInfo from './AppInfo';
+import CardInfo from './CardInfo';
 import Spinner from './components/spinner';
 
 class AppCard extends Component {
@@ -36,7 +36,7 @@ class AppCard extends Component {
 
     return (
       <Card hoverable className="card" cover={{ ...loadComponent, ...imageComponent }}>
-        <AppInfo data={data} guestSessionId={guestSessionId} />
+        <CardInfo data={data} guestSessionId={guestSessionId} />
       </Card>
     );
   }

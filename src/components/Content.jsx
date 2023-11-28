@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import Movies from '../service/serviceMovies';
 
-import AppFlex from './AppFlex';
-import AppSearch from './AppSearch';
+import Cards from './Cards';
+import AppSearch from './Search';
 import Spinner from './components/spinner';
 
-class AppContent extends Component {
+class Content extends Component {
   constructor() {
     super();
 
@@ -58,7 +58,7 @@ class AppContent extends Component {
     const loading = this.state.loading;
     const componentLoading = loading ? <Spinner /> : null;
     const componentFlex = !loading ? (
-      <AppFlex
+      <Cards
         name={this.state.name}
         page={this.state.page}
         moviesData={this.state.moviesData}
@@ -78,4 +78,4 @@ class AppContent extends Component {
   }
 }
 
-export default AppContent;
+export default Content;

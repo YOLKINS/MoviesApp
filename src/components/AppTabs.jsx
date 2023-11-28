@@ -3,9 +3,9 @@ import { Tabs } from 'antd';
 
 import Session from '../service/serviceSession';
 
-import AppContent from './AppContent';
+import Content from './Content';
 import Spinner from './components/spinner';
-import AppRated from './AppRated';
+import Rated from './Rated';
 
 class AppTabs extends Component {
   constructor(props) {
@@ -42,13 +42,13 @@ class AppTabs extends Component {
       {
         key: '1',
         label: 'Search',
-        children: this.state.guestSessionId ? <AppContent guestSessionId={this.state.guestSessionId} /> : <Spinner />,
+        children: this.state.guestSessionId ? <Content guestSessionId={this.state.guestSessionId} /> : <Spinner />,
       },
       {
         key: '2',
         label: 'Rated',
         children: this.state.guestSessionId ? (
-          <AppRated apiKey={this.state.apiKey} guestSessionId={this.state.guestSessionId} />
+          <Rated apiKey={this.state.apiKey} guestSessionId={this.state.guestSessionId} />
         ) : (
           <Spinner />
         ),

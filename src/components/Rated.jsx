@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import Session from '../service/serviceSession';
 
-import AppFlex from './AppFlex';
+import AppFlex from './Cards';
 import Spinner from './components/spinner';
 
-class AppRated extends Component {
+class Rated extends Component {
   constructor() {
     super();
 
@@ -61,4 +61,4 @@ class AppRated extends Component {
   }
 }
 
-export default AppRated;
+export default Rated;

@@ -4,9 +4,9 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import Movies from '../service/serviceMovies';
 
-import AppCard from './AppCard';
+import AppCard from './Card';
 
-class AppFlex extends Component {
+class Cards extends Component {
   constructor() {
     super();
 
@@ -43,4 +43,4 @@ class AppFlex extends Component {
   }
 }
 
-export default AppFlex;
+export default Cards;

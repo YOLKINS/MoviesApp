@@ -3,7 +3,7 @@ import { Button } from 'antd';
 
 import Movies from '../../service/serviceMovies';
 
-export default class AppGenre extends Component {
+export default class Genre extends Component {
   constructor() {
     super();
 
@@ -19,7 +19,6 @@ export default class AppGenre extends Component {
 
     if (genreIds) {
       await this.movies.getGenreOfMovie(genreIds).then((res) => {
-        console.log('должен массив из жанров', res);
         this.setState({ genreNames: res });
       });
     }
